@@ -1,0 +1,228 @@
+/* Variables de Colores */
+:root {
+    --bg-dark: #121212;
+    --bg-card: #1E1E1E;
+    --gold: #D4AF37;
+    --gold-hover: #B59226;
+    --text-light: #F0F0F0;
+    --text-gray: #A0A0A0;
+}
+
+/* Reset y Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* Encabezado */
+.header {
+    background-color: rgba(18, 18, 18, 0.95);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid #2A2A2A;
+    z-index: 100;
+}
+
+.logo-texto {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.logo-texto span {
+    color: var(--gold);
+}
+
+.logo small {
+    display: block;
+    font-size: 0.6rem;
+    color: var(--text-gray);
+    text-transform: uppercase;
+}
+
+.nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.nav a:hover {
+    color: var(--gold);
+}
+
+/* Sección Hero */
+.hero {
+    padding: 5rem 2rem;
+    text-align: center;
+    background: linear-gradient(180deg, var(--bg-dark) 0%, #1A1A1A 100%);
+}
+
+.badge {
+    background-color: rgba(212, 175, 55, 0.15);
+    color: var(--gold);
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    border: 1px solid var(--gold);
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin: 1rem 0;
+}
+
+.texto-dorado {
+    color: var(--gold);
+}
+
+.hero p {
+    color: var(--text-gray);
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+}
+
+/* Botones */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s;
+}
+
+.btn-primario {
+    background-color: var(--gold);
+    color: black;
+}
+
+.btn-primario:hover {
+    background-color: var(--gold-hover);
+}
+
+.btn-secundario {
+    background-color: transparent;
+    color: white;
+    border: 1px solid #444;
+    margin-left: 0.5rem;
+}
+
+.btn-oro {
+    background-color: var(--gold);
+    color: black;
+    width: 100%;
+}
+
+/* Secciones */
+.seccion {
+    padding: 4rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.seccion-oscura {
+    background-color: var(--bg-card);
+    border-radius: 15px;
+}
+
+.titulo-seccion {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.subtitulo-seccion {
+    text-align: center;
+    color: var(--gold);
+    font-size: 0.9rem;
+    margin-bottom: 3rem;
+}
+
+/* Grillas */
+.grid-tarjetas, .grid-catalogo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.tarjeta-info, .tarjeta-beneficio, .tarjeta-producto {
+    background-color: var(--bg-card);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #2A2A2A;
+    text-align: center;
+}
+
+.icono, .icono-dorado {
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+
+.tarjeta-producto {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tarjeta-producto.destacada {
+    border: 2px solid var(--gold);
+}
+
+.tag {
+    background-color: #333;
+    color: var(--text-gray);
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 10px;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+.tag-oro {
+    background-color: var(--gold);
+    color: black;
+    font-weight: bold;
+}
+
+.precio {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--gold);
+    margin: 1rem 0;
+}
+
+.contacto-contenedor {
+    text-align: center;
+    background-color: var(--bg-card);
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: black;
+    color: var(--text-gray);
+    font-size: 0.8rem;
+    border-top: 1px solid #2A2A2A;
+}
