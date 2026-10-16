@@ -1,4 +1,5 @@
-/* Variables de Colores */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Poppins:wght@300;400;600;700&display=swap');
+
 :root {
     --bg-dark: #121212;
     --bg-card: #1E1E1E;
@@ -8,37 +9,56 @@
     --text-gray: #A0A0A0;
 }
 
-/* Reset y Base */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
 }
 
-body {
+/* Configuramos el cuerpo para fijar la pantalla completa en la portada */
+html, body {
+    height: 100%;
     background-color: var(--bg-dark);
     color: var(--text-light);
-    line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
 }
 
-/* Encabezado */
+/* Encabezado Fijo */
 .header {
     background-color: rgba(18, 18, 18, 0.95);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    position: sticky;
-    top: 0;
+    padding: 0.8rem 2rem;
     border-bottom: 1px solid #2A2A2A;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     z-index: 100;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.logo-img-nav {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    object-fit: cover;
+}
+
 .logo-texto {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: bold;
     color: white;
+    font-family: 'Orbitron', sans-serif;
 }
 
 .logo-texto span {
@@ -47,118 +67,173 @@ body {
 
 .logo small {
     display: block;
-    font-size: 0.6rem;
+    font-size: 0.55rem;
     color: var(--text-gray);
     text-transform: uppercase;
+}
+
+/* Navegación y Enlaces */
+.nav {
+    display: flex;
+    gap: 0.4rem;
 }
 
 .nav a {
     color: var(--text-light);
     text-decoration: none;
-    margin-left: 1.5rem;
-    font-size: 0.9rem;
-    transition: color 0.3s;
+    font-size: 0.85rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
 }
 
 .nav a:hover {
     color: var(--gold);
+    background-color: rgba(212, 175, 55, 0.1);
 }
 
-/* Sección Hero */
-.hero {
-    padding: 5rem 2rem;
-    text-align: center;
-    background: linear-gradient(180deg, var(--bg-dark) 0%, #1A1A1A 100%);
+.nav a.activo {
+    background-color: var(--gold);
+    color: black;
+    font-weight: bold;
+}
+
+/* PORTADA SIN SCROLL (Cubre exactamente el alto de pantalla) */
+.hero-fijo {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 2rem 3rem 2rem;
+    background: radial-gradient(circle at 30% 50%, #1a1a1a 0%, var(--bg-dark) 70%);
+    overflow: hidden; /* Evita que aparezca la barra de scroll */
+}
+
+.hero-contenedor {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.hero-logo-wrapper {
+    flex: 1;
+    min-width: 260px;
+    display: flex;
+    justify-content: center;
+}
+
+.logo-flotante {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 50%;
+    box-shadow: 0 0 35px rgba(212, 175, 55, 0.4);
+    border: 3px solid rgba(212, 175, 55, 0.6);
+    animation: flotar 4s ease-in-out infinite;
+}
+
+@keyframes flotar {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+}
+
+.hero-contenido {
+    flex: 1.2;
+    min-width: 280px;
 }
 
 .badge {
     background-color: rgba(212, 175, 55, 0.15);
     color: var(--gold);
-    padding: 0.3rem 1rem;
+    padding: 0.25rem 0.9rem;
     border-radius: 20px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     border: 1px solid var(--gold);
-}
-
-.hero h1 {
-    font-size: 2.5rem;
-    margin: 1rem 0;
-}
-
-.texto-dorado {
-    color: var(--gold);
-}
-
-.hero p {
-    color: var(--text-gray);
-    max-width: 600px;
-    margin: 0 auto 2rem auto;
-}
-
-/* Botones */
-.btn {
     display: inline-block;
-    padding: 0.8rem 1.8rem;
-    border-radius: 25px;
+}
+
+.titulo-futurista {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.2;
+    margin: 0.8rem 0;
+}
+
+.glitch-gold {
+    background: linear-gradient(135deg, #FFF099 0%, #D4AF37 50%, #997A15 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-descripcion {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Botones Futuristas */
+.btn-futurista-primario {
+    background: linear-gradient(135deg, #D4AF37 0%, #B59226 100%);
+    color: #000;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    padding: 0.75rem 1.6rem;
+    border-radius: 30px;
     text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
-    border: none;
-    transition: background 0.3s;
+    display: inline-block;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+    transition: transform 0.3s;
 }
 
-.btn-primario {
-    background-color: var(--gold);
-    color: black;
+.btn-futurista-primario:hover {
+    transform: translateY(-2px);
 }
 
-.btn-primario:hover {
-    background-color: var(--gold-hover);
-}
-
-.btn-secundario {
-    background-color: transparent;
-    color: white;
-    border: 1px solid #444;
+.btn-futurista-secundario {
+    background: transparent;
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    padding: 0.75rem 1.6rem;
+    border-radius: 30px;
+    text-decoration: none;
+    border: 1px solid rgba(212, 175, 55, 0.5);
     margin-left: 0.5rem;
+    display: inline-block;
 }
 
-.btn-oro {
-    background-color: var(--gold);
-    color: black;
-    width: 100%;
-}
-
-/* Secciones */
+/* Estilos de las Páginas Secundarias */
 .seccion {
-    padding: 4rem 2rem;
+    padding: 6rem 2rem 4rem 2rem;
     max-width: 1100px;
     margin: 0 auto;
-}
-
-.seccion-oscura {
-    background-color: var(--bg-card);
-    border-radius: 15px;
+    width: 100%;
 }
 
 .titulo-seccion {
     text-align: center;
     font-size: 2rem;
-    margin-bottom: 0.5rem;
     color: white;
+    font-family: 'Orbitron', sans-serif;
 }
 
 .subtitulo-seccion {
     text-align: center;
     color: var(--gold);
     font-size: 0.9rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
 }
 
-/* Grillas */
 .grid-tarjetas, .grid-catalogo {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 1.5rem;
 }
 
@@ -170,59 +245,74 @@ body {
     text-align: center;
 }
 
-.icono, .icono-dorado {
-    font-size: 2rem;
-    color: var(--gold);
-    margin-bottom: 1rem;
-}
+.icono, .icono-dorado { font-size: 2rem; color: var(--gold); margin-bottom: 1rem; }
+.tarjeta-producto.destacada { border: 2px solid var(--gold); }
+.tag { background-color: #333; color: var(--text-gray); font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 10px; display: inline-block; }
+.tag-oro { background-color: var(--gold); color: black; font-weight: bold; }
+.precio { font-size: 1.8rem; font-weight: bold; color: var(--gold); margin: 1rem 0; font-family: 'Orbitron', sans-serif; }
 
-.tarjeta-producto {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.tarjeta-producto.destacada {
-    border: 2px solid var(--gold);
-}
-
-.tag {
-    background-color: #333;
-    color: var(--text-gray);
-    font-size: 0.7rem;
-    padding: 0.2rem 0.6rem;
-    border-radius: 10px;
-    display: inline-block;
-    margin-bottom: 0.5rem;
-}
-
-.tag-oro {
-    background-color: var(--gold);
-    color: black;
-    font-weight: bold;
-}
-
-.precio {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: var(--gold);
-    margin: 1rem 0;
-}
+.btn { padding: 0.8rem 1.8rem; border-radius: 25px; border: none; font-weight: bold; cursor: pointer; }
+.btn-primario { background-color: var(--gold); color: black; }
+.btn-oro { background-color: var(--gold); color: black; width: 100%; }
 
 .contacto-contenedor {
-    text-align: center;
     background-color: var(--bg-card);
-    padding: 2rem;
-    border-radius: 12px;
+    padding: 3rem;
+    border-radius: 15px;
+    border: 1px solid #2A2A2A;
+    text-align: center;
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 2rem;
+/* Pie de Página Fijo para la Portada */
+.footer-portada {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     background-color: black;
-    color: var(--text-gray);
-    font-size: 0.8rem;
     border-top: 1px solid #2A2A2A;
+    padding: 0.6rem 2rem;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-gray);
+    z-index: 100;
+}
+
+/* Pie de Página Estándar para las demás páginas */
+.footer-fijo {
+    background-color: black;
+    border-top: 1px solid #2A2A2A;
+    padding: 1rem 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-gray);
+    margin-top: auto;
+}
+
+/* Adaptación para pantallas pequeñas */
+@media (max-width: 768px) {
+    .header { position: relative; flex-direction: column; gap: 0.8rem; }
+    .hero-fijo { height: auto; min-height: 100vh; padding-top: 2rem; overflow: auto; }
+    .hero-contenedor { flex-direction: column; text-align: center; }
+    .footer-portada { position: relative; }
+}
+/* Caja provisional para fotos pendientes */
+.contenedor-foto-placeholder {
+    background-color: #151515;
+    border: 2px dashed var(--gold);
+    border-radius: 12px;
+    padding: 2.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilo para cuando subas la foto real */
+.imagen-seccion {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid var(--gold);
 }

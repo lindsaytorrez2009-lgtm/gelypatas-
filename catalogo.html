@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GelyPatas | Catálogo de Productos</title>
+    <!-- Estilo CSS compartido -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Iconos FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <!-- Encabezado Fijo -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="GelyPatas Logo" class="logo-img-nav">
+            <div>
+                <span class="logo-texto">GELY<span>PATAS</span></span>
+                <small>Colágeno Artesanal</small>
+            </div>
+        </a>
+        <nav class="nav">
+            <a href="index.html"><i class="fa-solid fa-house"></i> Inicio</a>
+            <a href="nosotros.html"><i class="fa-solid fa-users"></i> Nosotros</a>
+            <a href="humanos.html"><i class="fa-solid fa-person"></i> Humano</a>
+            <a href="mascotas.html"><i class="fa-solid fa-paw"></i> Mascotas</a>
+            <a href="catalogo.html" class="activo"><i class="fa-solid fa-store"></i> Catálogo</a>
+            <a href="contacto.html"><i class="fa-solid fa-envelope"></i> Contacto</a>
+        </nav>
+    </header>
+
+    <!-- Contenido del Catálogo -->
+    <main class="seccion">
+        <h2 class="titulo-seccion">Catálogo de Productos</h2>
+        <p class="subtitulo-seccion">Elige tus productos de colágeno natural y ordénalos directo por WhatsApp</p>
+
+        <div class="grid-catalogo">
+            
+            <!-- Producto 1: Vaso Humano -->
+            <div class="tarjeta-producto">
+                <div class="contenedor-foto-placeholder" style="padding: 1.5rem 0.5rem; margin-bottom: 1rem;">
+                    <i class="fa-solid fa-whiskey-glass" style="font-size: 2.5rem; color: var(--gold); margin-bottom: 0.3rem;"></i>
+                    <p style="font-size: 0.75rem; color: var(--text-gray);">Foto Vaso Humano</p>
+                    <!-- Al tener la foto real:
+                    <img src="images/vaso-humano.jpg" alt="Vaso Familiar" class="imagen-producto">
+                    -->
+                </div>
+                <div class="tag">Línea Humana</div>
+                <h3 style="font-family: 'Orbitron', sans-serif; margin-top: 0.5rem;">Vaso Familiar</h3>
+                <p class="descripcion" style="font-size: 0.85rem; color: var(--text-gray); margin: 0.5rem 0 1rem 0;">
+                    Vaso individual de colágeno artesanal puro listo para consumir por las mañanas.
+                </p>
+                <div class="precio">12 Bs.</div>
+                <button class="btn btn-primario" onclick="pedirWhatsApp('Vaso Familiar - 12 Bs')">
+                    <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                </button>
+            </div>
+
+            <!-- Producto 2: Envase Cubitos Mascotas -->
+            <div class="tarjeta-producto">
+                <div class="contenedor-foto-placeholder" style="padding: 1.5rem 0.5rem; margin-bottom: 1rem;">
+                    <i class="fa-solid fa-cubes" style="font-size: 2.5rem; color: var(--gold); margin-bottom: 0.3rem;"></i>
+                    <p style="font-size: 0.75rem; color: var(--text-gray);">Foto Cubitos Mascotas</p>
+                    <!-- Al tener la foto real:
+                    <img src="images/cubitos-mascotas.jpg" alt="Envase Cubitos Mascotas" class="imagen-producto">
+                    -->
+                </div>
+                <div class="tag">Línea Mascotas</div>
+                <h3 style="font-family: 'Orbitron', sans-serif; margin-top: 0.5rem;">Envase Cubitos</h3>
+                <p class="descripcion" style="font-size: 0.85rem; color: var(--text-gray); margin: 0.5rem 0 1rem 0;">
+                    Envase dosificado con cubitos de colágeno natural ideales para perros y gatos.
+                </p>
+                <div class="precio">15 Bs.</div>
+                <button class="btn btn-primario" onclick="pedirWhatsApp('Envase Cubitos Mascotas - 15 Bs')">
+                    <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+                </button>
+            </div>
+
+            <!-- Producto 3: Combo Dúo Destacado -->
+            <div class="tarjeta-producto destacada">
+                <div class="contenedor-foto-placeholder" style="padding: 1.5rem 0.5rem; margin-bottom: 1rem;">
+                    <i class="fa-solid fa-box-open" style="font-size: 2.5rem; color: var(--gold); margin-bottom: 0.3rem;"></i>
+                    <p style="font-size: 0.75rem; color: var(--text-gray);">Foto Combo Dúo</p>
+                    <!-- Al tener la foto real:
+                    <img src="images/combo-duo.jpg" alt="Pack Duo Tu y tu Mascota" class="imagen-producto">
+                    -->
+                </div>
+                <div class="tag tag-oro">Co-Sharing Destacado</div>
+                <h3 style="font-family: 'Orbitron', sans-serif; margin-top: 0.5rem;">Pack "Tú y tu Mascota"</h3>
+                <p class="descripcion" style="font-size: 0.85rem; color: var(--text-gray); margin: 0.5rem 0 1rem 0;">
+                    1 Vaso Humano + 1 Envase Cubitos Mascotas. ¡La combinación perfecta para compartir!
+                </p>
+                <div class="precio">25 Bs.</div>
+                <button class="btn btn-oro" onclick="pedirWhatsApp('Pack Duo Tu y tu Mascota - 25 Bs')">
+                    <i class="fa-brands fa-whatsapp"></i> Pedir Combo Dúo
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Mensaje Aclaratorio -->
+        <div class="tarjeta-info" style="margin-top: 2.5rem; text-align: center;">
+            <p style="font-size: 0.9rem; color: var(--text-gray);">
+                <i class="fa-solid fa-truck-ramping" style="color: var(--gold);"></i> Entregas personales y envíos en Cochabamba, Bolivia. Consulta disponibilidad por WhatsApp.
+            </p>
+        </div>
+    </main>
+
+    <!-- Pie de Página -->
+    <footer class="footer-fijo">
+        <p>&copy; 2026 GelyPatas - Todos los derechos reservados | Cochabamba, Bolivia</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

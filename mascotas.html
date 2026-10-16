@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GelyPatas | Línea Mascotas</title>
+    <!-- Estilo CSS compartido -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Iconos FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <!-- Encabezado Fijo -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="images/logo.png" alt="GelyPatas Logo" class="logo-img-nav">
+            <div>
+                <span class="logo-texto">GELY<span>PATAS</span></span>
+                <small>Colágeno Artesanal</small>
+            </div>
+        </a>
+        <nav class="nav">
+            <a href="index.html"><i class="fa-solid fa-house"></i> Inicio</a>
+            <a href="nosotros.html"><i class="fa-solid fa-users"></i> Nosotros</a>
+            <a href="humanos.html"><i class="fa-solid fa-person"></i> Humano</a>
+            <a href="mascotas.html" class="activo"><i class="fa-solid fa-paw"></i> Mascotas</a>
+            <a href="catalogo.html"><i class="fa-solid fa-store"></i> Catálogo</a>
+            <a href="contacto.html"><i class="fa-solid fa-envelope"></i> Contacto</a>
+        </nav>
+    </header>
+
+    <!-- Contenido de la Línea Mascotas -->
+    <main class="seccion">
+        <h2 class="titulo-seccion">Línea Mascotas</h2>
+        <p class="subtitulo-seccion">Nutrición Funcional para Perros y Gatos de Todas las Edades</p>
+
+        <!-- Bloque Principal de Presentación -->
+        <div class="tarjeta-info" style="margin-bottom: 2rem; display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; text-align: left;">
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="color: var(--gold); margin-bottom: 0.8rem; font-family: 'Orbitron', sans-serif;">
+                    <i class="fa-solid fa-shield-cat"></i> Salud Articular y Pelaje Brillante
+                </h3>
+                <p>Nuestra línea para mascotas está elaborada con colágeno 100% natural libre de condimentos, sal añadida, ajo u cebolla. Presentado en prácticos cubitos dosificados ideales para enriquecer su comida habitual o como premio saludable.</p>
+            </div>
+            
+            <!-- ESPACIO RESERVADO PARA TU FUTURA FOTO PERROS/GATOS -->
+            <div style="flex: 1; min-width: 250px; text-align: center;">
+                <div class="contenedor-foto-placeholder">
+                    <i class="fa-solid fa-dog" style="font-size: 3rem; color: var(--gold); margin-bottom: 0.5rem;"></i>
+                    <p style="font-size: 0.85rem; color: var(--text-gray);">Próximamente: Foto de Cubitos para Mascotas</p>
+                    <!-- Cuando tengas la foto, cambia esta caja por:
+                    <img src="images/mascotas-producto.jpg" alt="Cubitos de Colágeno GelyPatas" class="imagen-seccion"> 
+                    -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Tarjetas de Beneficios Específicos -->
+        <div class="grid-tarjetas">
+            <div class="tarjeta-beneficio">
+                <i class="fa-solid fa-shield-dog icono-dorado"></i>
+                <h4>Protección de Articulaciones</h4>
+                <p>Previene y ayuda en el tratamiento de la displasia de cadera, artritis y problemas de movilidad en perros y gatos de edad avanzada o razas grandes.</p>
+            </div>
+
+            <div class="tarjeta-beneficio">
+                <i class="fa-solid fa-cat icono-dorado"></i>
+                <h4>Pelaje Brillo y Piel Sana</h4>
+                <p>Nutre los folículos capilares reduciendo la caída excesiva de pelo y mejorando notablemente el brillo y la suave textura de su manto.</p>
+            </div>
+
+            <div class="tarjeta-beneficio">
+                <i class="fa-solid fa-bowl-rice icono-dorado"></i>
+                <h4>Salud Digestiva e Inmunológica</h4>
+                <p>Protege y regenera la mucosa intestinal, mejorando la absorción de nutrientes y fortaleciendo sus defensas naturales de forma digestiva.</p>
+            </div>
+        </div>
+
+        <!-- Guía de Dosificación Recomendada -->
+        <div class="tarjeta-info" style="margin-top: 2rem; text-align: left;">
+            <h3 style="color: var(--gold); font-family: 'Orbitron', sans-serif; margin-bottom: 1rem;">
+                <i class="fa-solid fa-bone"></i> Guía de Dosificación Diaria
+            </h3>
+            <p><strong>Mascotas Pequeñas / Gatos (&lt; 10 kg):</strong> 1 a 2 cubitos diarios mezclados con su comida o como premio directo.</p>
+            <p style="margin-top: 0.4rem;"><strong>Mascotas Medianas (10 kg - 25 kg):</strong> 2 a 3 cubitos diarios.</p>
+            <p style="margin-top: 0.4rem;"><strong>Mascotas Grandes (&gt; 25 kg):</strong> 3 a 5 cubitos diarios.</p>
+            <p style="margin-top: 0.8rem; font-size: 0.85rem; color: var(--text-gray);"><i class="fa-solid fa-snowflake"></i> <strong>Nota:</strong> Servir frío o a temperatura ambiente. Mantener refrigerado.</p>
+        </div>
+    </main>
+
+    <!-- Pie de Página -->
+    <footer class="footer-fijo">
+        <p>&copy; 2026 GelyPatas - Todos los derechos reservados | Cochabamba, Bolivia</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
