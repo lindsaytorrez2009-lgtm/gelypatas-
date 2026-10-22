@@ -12,7 +12,7 @@ function pedirWhatsApp(nombreProducto) {
 
 
 
-// Sistema de Mascotas Shimeji con Patrullaje + Arrastre + Pataleo + Gravedad Suave
+// Sistema de Mascotas Shimeji con Direcciones Corregidas + Pataleo + Gravedad Suave
 function crearMascotaPatrullera(idElemento, config) {
     const mascota = document.getElementById(idElemento);
     if (!mascota) return;
@@ -34,18 +34,23 @@ function crearMascotaPatrullera(idElemento, config) {
     mascota.style.top = `${posY}px`;
     mascota.style.left = `${posX}px`;
 
+    // Estado visual inicial mirando hacia la derecha
+    if (cuerpo) cuerpo.style.transform = 'scaleX(-1)';
+
     // 1. Bucle de Caminata Autónoma (Patrullaje)
     function caminar() {
         if (!isDragging) {
             posX += velocidad * direccion;
 
-            // Rebotar al llegar a los bordes de la pantalla
+            // Rebotar al llegar al borde DERECHO -> Girar hacia la izquierda
             if (posX >= window.innerWidth - 80) {
                 direccion = -1;
-                if (cuerpo) cuerpo.style.transform = 'scaleX(-1)';
-            } else if (posX <= 10) {
+                if (cuerpo) cuerpo.style.transform = 'scaleX(1)'; // Mira a la izquierda
+            } 
+            // Rebotar al llegar al borde IZQUIERDO -> Girar hacia la derecha
+            else if (posX <= 10) {
                 direccion = 1;
-                if (cuerpo) cuerpo.style.transform = 'scaleX(1)';
+                if (cuerpo) cuerpo.style.transform = 'scaleX(-1)'; // Mira a la derecha
             }
 
             mascota.style.left = `${posX}px`;
@@ -64,7 +69,7 @@ function crearMascotaPatrullera(idElemento, config) {
         bocadillo.textContent = config.frases.agarrado;
         mascota.style.transition = 'none';
         mascota.style.zIndex = '1000';
-        mascota.classList.add('pataleando'); // Clase que activa la animación de mover patitas
+        mascota.classList.add('pataleando');
     });
 
     // 3. Mover mientras se agarra
@@ -81,17 +86,16 @@ function crearMascotaPatrullera(idElemento, config) {
         mascota.style.top = `${posY}px`;
     });
 
-    // 4. Soltar con caída más LENTA y suave
+    // 4. Soltar con caída suave y reanudar marcha
     document.addEventListener('mouseup', () => {
         if (isDragging) {
             isDragging = false;
-            mascota.classList.remove('pataleando'); // Apaga el pataleo al caer
+            mascota.classList.remove('pataleando');
             
             bocadillo.textContent = config.frases.caida;
             
             const sueloY = window.innerHeight - 100;
             
-            // Caída suave y en cámara lenta (1.4 segundos de caída amortiguada)
             mascota.style.transition = 'top 1.4s cubic-bezier(0.34, 1.2, 0.64, 1)';
             mascota.style.top = `${sueloY}px`;
             posY = sueloY;
@@ -105,28 +109,28 @@ function crearMascotaPatrullera(idElemento, config) {
     });
 }
 
-// Inicializar el Squad caminando
+// Inicializar el Squad naciendo desde la izquierda
 document.addEventListener('DOMContentLoaded', () => {
     crearMascotaPatrullera('mishi-interactivo', {
-        inicioX: 50,
+        inicioX: 30,
         velocidad: 1.2,
         frases: { agarrado: '¡Ayyy miau! 🐈✨', caida: '¡Flotando suave! 🐾', reposo: '¡Dame colágeno! 🐱' }
     });
 
     crearMascotaPatrullera('perrito-interactivo', {
-        inicioX: 250,
+        inicioX: 180,
         velocidad: 2.0,
         frases: { agarrado: '¡Woof woof! 🐕🔥', caida: '¡Atrapa la pata! 🦴', reposo: '¡GelyPatas fan! 🐶' }
     });
 
     crearMascotaPatrullera('vaquita-interactiva', {
-        inicioX: 550,
+        inicioX: 340,
         velocidad: 0.8,
-        frases: { agarrado: '¡Mooow aaaaa! completamente en el aire 🐄💥', caida: '¡Caída espacial! 🌾', reposo: '100% Artesanal 🐮' }
+        frases: { agarrado: '¡Mooow aaaaa! 🐄💥', caida: '¡Caída espacial! 🌾', reposo: '100% Artesanal 🐮' }
     });
 
     crearMascotaPatrullera('humano-interactivo', {
-        inicioX: 850,
+        inicioX: 490,
         velocidad: 1.5,
         frases: { agarrado: '¡Oye soltame! 🧍‍♂️⚡', caida: '¡Caigo en paracaídas! 🪂', reposo: 'Co-Sharing Power 💪' }
     });
