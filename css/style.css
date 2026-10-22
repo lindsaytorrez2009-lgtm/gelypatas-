@@ -107,7 +107,8 @@ html, body {
     justify-content: center;
     padding: 5rem 2rem 3rem 2rem;
     background: radial-gradient(circle at 30% 50%, #1a1a1a 0%, var(--bg-dark) 70%);
-    overflow: hidden; /* Evita que aparezca la barra de scroll */
+    overflow: hidden;
+    position: relative; /* <-- IMPORTANTE: agrega esta línea */
 }
 
 .hero-contenedor {
@@ -130,10 +131,10 @@ html, body {
 
 .logo-flotante {
     width: 100%;
-    max-width: 320px;
+    max-width: 420px; /* Subimos de 320px a 420px para que crezca */
     border-radius: 50%;
-    box-shadow: 0 0 35px rgba(212, 175, 55, 0.4);
-    border: 3px solid rgba(212, 175, 55, 0.6);
+    box-shadow: 0 0 45px rgba(212, 175, 55, 0.5); /* Anillo de luz dorada más grande */
+    border: 3px solid rgba(212, 175, 55, 0.7);
     animation: flotar 4s ease-in-out infinite;
 }
 
@@ -279,6 +280,7 @@ html, body {
 }
 
 /* Pie de Página Estándar para las demás páginas */
+/* Pie de Página Estándar para las demás páginas */
 .footer-fijo {
     background-color: black;
     border-top: 1px solid #2A2A2A;
@@ -286,7 +288,8 @@ html, body {
     text-align: center;
     font-size: 0.8rem;
     color: var(--text-gray);
-    margin-top: auto;
+    margin-top: 3rem;
+    width: 100%;
 }
 
 /* Adaptación para pantallas pequeñas */
@@ -315,4 +318,73 @@ html, body {
     object-fit: cover;
     border-radius: 12px;
     border: 1px solid var(--gold);
+}
+
+
+
+
+/* Asegura que el fondo negro cubra el 100% de la pantalla */
+html, body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+/* Hace que el contenido principal ocupe todo el espacio libre y empuje el footer al final exacto */
+main, .seccion {
+    flex: 1;
+}
+
+
+
+
+
+
+
+
+
+/* MASCOTAS SHIMEJI */
+.mascota-virtual {
+    position: fixed;
+    font-size: 2.8rem;
+    cursor: grab;
+    user-select: none;
+    z-index: 999;
+}
+
+.mascota-virtual:active {
+    cursor: grabbing;
+}
+
+.bocadillo-texto {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffff;
+    color: #111111;
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    pointer-events: none;
+}
+
+
+
+/* EFECTO DE PATALEO FÍSICO AL ELEVAR LAS MASCOTAS */
+.mascota-virtual.pataleando .cuerpo-mascota {
+    animation: patalear 0.18s infinite alternate ease-in-out;
+}
+
+@keyframes patalear {
+    0% {
+        transform: scale(1.15) rotate(-12deg) translateY(-3px);
+    }
+    100% {
+        transform: scale(1.15) rotate(12deg) translateY(3px);
+    }
 }
