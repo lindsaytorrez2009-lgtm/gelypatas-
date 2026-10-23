@@ -425,17 +425,33 @@ main, .seccion {
     transition: transform 0.3s ease-in, opacity 0.3s ease-in !important;
 }
 
+/* BOCADILLO ADAPTABLE PARA EVITAR CORTES DE PANTALLA */
 .bocadillo-espia {
     position: absolute;
-    top: -40px;
+    top: -42px;
     left: 50%;
     transform: translateX(-50%);
     background: #ffffff;
     color: #111111;
-    padding: 4px 10px;
+    padding: 5px 12px;
     border-radius: 12px;
     font-size: 0.8rem;
     font-weight: bold;
     white-space: nowrap;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease, left 0.2s ease, right 0.2s ease;
+}
+
+/* Si la mascota está pegada a la DERECHA, el bocadillo se mete a la izquierda */
+.animalito-espia.oculto-der .bocadillo-espia {
+    left: auto !important;
+    right: 0 !important;
+    transform: translateX(0) !important;
+}
+
+/* Si la mascota está pegada a la IZQUIERDA, el bocadillo se extiende hacia la derecha */
+.animalito-espia.oculto-izq .bocadillo-espia {
+    left: 0 !important;
+    right: auto !important;
+    transform: translateX(0) !important;
 }

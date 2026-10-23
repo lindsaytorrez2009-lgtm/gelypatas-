@@ -280,3 +280,71 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
+
+
+
+function iniciarAnimalitoCurioso(idElemento, config) {
+    const espia = document.getElementById(idElemento);
+    if (!espia) return;
+
+    const ojitos = espia.querySelector('.ojitos-curiosos');
+    const bocadillo = espia.querySelector('.bocadillo-espia');
+    let estaEspantado = false;
+
+    function aparecer() {
+        estaEspantado = false;
+        espia.classList.remove('espantado');
+
+        // Margen seguro horizontal para que los textos largos no se salgan del marco
+        const posXSegura = Math.floor(Math.random() * (window.innerWidth - 320)) + 160;
+
+        const posiciones = [
+            { top: 'auto', bottom: '20px', left: `${posXSegura}px`, right: 'auto', espejo: 'scaleX(1)', oculto: 'oculto-abajo' },
+            { top: '90px', bottom: 'auto', left: `${posXSegura}px`, right: 'auto', espejo: 'scaleX(1)', oculto: 'oculto-arriba' },
+            { top: '45%', bottom: 'auto', left: '20px', right: 'auto', espejo: 'scaleX(-1)', oculto: 'oculto-izq' },
+            { top: '45%', bottom: 'auto', left: 'auto', right: '20px', espejo: 'scaleX(1)', oculto: 'oculto-der' }
+        ];
+
+        const pos = posiciones[Math.floor(Math.random() * posiciones.length)];
+        
+        espia.className = 'animalito-espia ' + pos.oculto;
+        espia.style.top = pos.top;
+        espia.style.bottom = pos.bottom;
+        espia.style.left = pos.left;
+        espia.style.right = pos.right;
+
+        if (ojitos) ojitos.style.transform = pos.espejo;
+
+        if (config.frasesNormales && config.frasesNormales.length > 0 && bocadillo) {
+            bocadillo.textContent = config.frasesNormales[Math.floor(Math.random() * config.frasesNormales.length)];
+        }
+
+        setTimeout(() => {
+            if (!estaEspantado) espia.classList.add('asomado');
+        }, 50);
+
+        setTimeout(() => {
+            if (!estaEspantado) {
+                espia.classList.remove('asomado');
+                setTimeout(aparecer, 4000);
+            }
+        }, 5000);
+    }
+
+    espia.addEventListener('click', () => {
+        if (estaEspantado) return;
+        estaEspantado = true;
+
+        if (config.sustos && config.sustos.length > 0 && bocadillo) {
+            bocadillo.textContent = config.sustos[Math.floor(Math.random() * config.sustos.length)];
+        }
+
+        espia.classList.remove('asomado');
+        espia.classList.add('espantado');
+
+        setTimeout(aparecer, 6000);
+    });
+
+    aparecer();
+}
