@@ -135,3 +135,148 @@ document.addEventListener('DOMContentLoaded', () => {
         frases: { agarrado: '¡Oye soltame! 🧍‍♂️⚡', caida: '¡Caigo en paracaídas! 🪂', reposo: 'Co-Sharing Power 💪' }
     });
 });
+
+
+
+
+// === SISTEMA DE ESPÍA CON SUSTOS PERSONALIZADOS POR PERSONAJE ===
+function iniciarAnimalitoCurioso(idElemento, config) {
+    const espia = document.getElementById(idElemento);
+    if (!espia) return;
+
+    const ojitos = espia.querySelector('.ojitos-curiosos');
+    const bocadillo = espia.querySelector('.bocadillo-espia');
+    let estaEspantado = false;
+
+    function aparecer() {
+        estaEspantado = false;
+        espia.classList.remove('espantado');
+
+        // Definir posiciones y clases para deslizamiento
+        const posiciones = [
+            { top: 'auto', bottom: '20px', left: '60px', right: 'auto', espejo: 'scaleX(1)', oculto: 'oculto-abajo' },
+            { top: '90px', bottom: 'auto', left: '60px', right: 'auto', espejo: 'scaleX(1)', oculto: 'oculto-arriba' },
+            { top: '45%', bottom: 'auto', left: '20px', right: 'auto', espejo: 'scaleX(-1)', oculto: 'oculto-izq' },
+            { top: '45%', bottom: 'auto', left: 'auto', right: '20px', espejo: 'scaleX(1)', oculto: 'oculto-der' }
+        ];
+
+        const pos = posiciones[Math.floor(Math.random() * posiciones.length)];
+        
+        espia.className = 'animalito-espia ' + pos.oculto;
+        espia.style.top = pos.top;
+        espia.style.bottom = pos.bottom;
+        espia.style.left = pos.left;
+        espia.style.right = pos.right;
+
+        if (ojitos) ojitos.style.transform = pos.espejo;
+
+        // Frase normal aleatoria
+        if (config.frasesNormales && config.frasesNormales.length > 0 && bocadillo) {
+            bocadillo.textContent = config.frasesNormales[Math.floor(Math.random() * config.frasesNormales.length)];
+        }
+
+        // Animación de entrada
+        setTimeout(() => {
+            if (!estaEspantado) espia.classList.add('asomado');
+        }, 50);
+
+        // Ocultarse suavemente después de 5 segundos
+        setTimeout(() => {
+            if (!estaEspantado) {
+                espia.classList.remove('asomado');
+                setTimeout(aparecer, 4000);
+            }
+        }, 5000);
+    }
+
+    // INTERACCIÓN: Click para espantar con frases únicas
+    espia.addEventListener('click', () => {
+        if (estaEspantado) return;
+        estaEspantado = true;
+
+        // Seleccionar susto aleatorio
+        if (config.sustos && config.sustos.length > 0 && bocadillo) {
+            const sustoAzar = config.sustos[Math.floor(Math.random() * config.sustos.length)];
+            bocadillo.textContent = sustoAzar;
+        }
+
+        // Efecto visual de susto (salto y desaparición)
+        espia.classList.remove('asomado');
+        espia.classList.add('espantado');
+
+        // Reaparece en otra posición en 6 segundos
+        setTimeout(aparecer, 6000);
+    });
+
+    aparecer();
+}
+
+// INICIALIZACIÓN CON FRASES Y 4 SUSTOS UNICOS POR CADA UNO
+document.addEventListener('DOMContentLoaded', () => {
+
+    // 1. EL MICHI (Nosotros.html)
+    iniciarAnimalitoCurioso('michi-espia', {
+        frasesNormales: [
+            '¿Qué lees por aquí? 🐱',
+            '¡Amo el colágeno! 🐾',
+            'Miau... curioseando 🐈',
+            '¡GelyPatas es top! ✨',
+            '¿No tienes un snack? 🐟'
+        ],
+        sustos: [
+            '¡AAAAH me vio! 🐱💥',
+            '¡Aych, no me toque! 🐾💨',
+            '¡Susto gatuno, me voy! 🐈⚡',
+            '¡Ups! ¡Abortar misión miau! 🙀🏃‍♂️'
+        ]
+    });
+
+    // 2. EL PERRITO (Mascotas.html)
+    iniciarAnimalitoCurioso('perro-espia', {
+        frasesNormales: [
+            '¡Huelo premios ricos! 🦴',
+            '¡Guau! ¿Qué miras? 🐶',
+            'Nutrición 100% natural 🐕',
+            '¡Firulais aprueba esto! 🔥'
+        ],
+        sustos: [
+            '¡WOOF! ¡Me atrapaste! 🐶💨',
+            '¡Ay mi cola, me asusté! 🐕💥',
+            '¡Corre Firulais, corre! 🦴⚡',
+            '¡No me descubras pue! 🐶🙈'
+        ]
+    });
+
+    // 3. EL HUMANO / GRANJERO (Humanos.html)
+    iniciarAnimalitoCurioso('humano-espia', {
+        frasesNormales: [
+            '¡Salud vital para todos! 💪',
+            'Co-Sharing en acción 🌾',
+            '¡Súper recomendado! 🙌'
+        ],
+        sustos: [
+            '¡Chaaaa me pillaste! 🧍‍♂️💥',
+            '¡Madre mía, qué susto! 🏃‍♂️💨',
+            '¡Tranqui, solo miraba! 😅⚡',
+            '¡No me asustes así bro! 🧍‍♂️🙈'
+        ]
+    });
+
+    // 4. DUPLA GRANJERO + VAQUITA (Catalogo.html)
+    iniciarAnimalitoCurioso('vaca-espia', {
+        frasesNormales: [
+            '¡Moo! Revisa el catálogo 🌾',
+            'Colágeno de res 100% puro 🐮',
+            '¡Calidad artesanal! 🥛',
+            '¿Ya elegiste tu snack favorito? 🛍️',
+            '¡El Granjero y yo aprobamos esto! 🤠🐮'
+        ],
+        sustos: [
+            '¡MOOOO! ¡Nos descubrieron! 🐮💥',
+            '¡Corre granjero, atrapan vacas! 🤠🐮💨',
+            '¡Aaaay la vaquita se asustó! 🌾⚡',
+            '¡Sálvese quien pueda! 🐮🚀'
+        ]
+    });
+
+});
