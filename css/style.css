@@ -1,12 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Poppins:wght@300;400;600;700&display=swap');
 
+/* =======================================================
+   VARIABLES GLOBALES: ESTILO NEGRO CYBERPUNK CON AZUL NEÓN
+   ======================================================= */
 :root {
-    --bg-dark: #121212;
-    --bg-card: #1E1E1E;
-    --gold: #D4AF37;
-    --gold-hover: #B59226;
+    --bg-dark: #0a0a0a;
+    --bg-card: #161616;
     --text-light: #F0F0F0;
     --text-gray: #A0A0A0;
+    
+    /* Azul Neón Fuego */
+    --gold: #00d2ff;
+    --gold-hover: #0088cc;
+    --blue-neon: #00d2ff;
+    --blue-neon-glow: rgba(0, 210, 255, 0.45);
+    --blue-neon-bright: #70e2ff;
+    --blue-deep: #006699;
 }
 
 * {
@@ -15,23 +24,30 @@
     box-sizing: border-box;
 }
 
-/* Configuramos el cuerpo para fijar la pantalla completa en la portada */
 html, body {
-    height: 100%;
+    min-height: 100vh;
     background-color: var(--bg-dark);
     color: var(--text-light);
     font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Encabezado Fijo */
+main, .seccion {
+    flex: 1;
+}
+
+/* =======================================================
+   HEADER COMPACTO Y ELEGANTE
+   ======================================================= */
 .header {
-    background-color: rgba(18, 18, 18, 0.95);
+    background-color: rgba(10, 10, 10, 0.95);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.8rem 2rem;
-    border-bottom: 1px solid #2A2A2A;
+    padding: 0.5rem 2rem;
+    border-bottom: 1px solid rgba(0, 210, 255, 0.2);
     position: fixed;
     top: 0;
     left: 0;
@@ -50,19 +66,20 @@ html, body {
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    border: 2px solid var(--gold);
+    border: 2px solid var(--blue-neon);
     object-fit: cover;
+    box-shadow: 0 0 8px var(--blue-neon-glow);
 }
 
 .logo-texto {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     font-weight: bold;
     color: white;
     font-family: 'Orbitron', sans-serif;
 }
 
 .logo-texto span {
-    color: var(--gold);
+    color: var(--blue-neon);
 }
 
 .logo small {
@@ -72,7 +89,6 @@ html, body {
     text-transform: uppercase;
 }
 
-/* Navegación y Enlaces */
 .nav {
     display: flex;
     gap: 0.4rem;
@@ -81,24 +97,28 @@ html, body {
 .nav a {
     color: var(--text-light);
     text-decoration: none;
-    font-size: 0.85rem;
-    padding: 0.4rem 0.9rem;
-    border-radius: 20px;
+    font-size: 0.9rem;
+    padding: 0.4rem 0.95rem;
+    border-radius: 18px;
     transition: all 0.3s ease;
 }
 
 .nav a:hover {
-    color: var(--gold);
-    background-color: rgba(212, 175, 55, 0.1);
+    color: var(--blue-neon-bright) !important;
+    background-color: rgba(0, 210, 255, 0.1);
+    text-shadow: 0 0 8px var(--blue-neon-glow);
 }
 
 .nav a.activo {
-    background-color: var(--gold);
-    color: black;
+    background: linear-gradient(135deg, var(--blue-neon) 0%, var(--blue-deep) 100%) !important;
+    color: #000000 !important;
     font-weight: bold;
+    box-shadow: 0 0 10px var(--blue-neon-glow);
 }
 
-/* PORTADA SIN SCROLL (Cubre exactamente el alto de pantalla) */
+/* =======================================================
+   PORTADA: LOGO CON FLOTACIÓN AMPLIA
+   ======================================================= */
 .hero-fijo {
     height: 100vh;
     width: 100%;
@@ -106,9 +126,9 @@ html, body {
     align-items: center;
     justify-content: center;
     padding: 5rem 2rem 3rem 2rem;
-    background: radial-gradient(circle at 30% 50%, #1a1a1a 0%, var(--bg-dark) 70%);
+    background: radial-gradient(circle at 30% 50%, #111a24 0%, var(--bg-dark) 75%);
     overflow: hidden;
-    position: relative; /* <-- IMPORTANTE: agrega esta línea */
+    position: relative;
 }
 
 .hero-contenedor {
@@ -124,23 +144,29 @@ html, body {
 
 .hero-logo-wrapper {
     flex: 1;
-    min-width: 260px;
+    min-width: 280px;
     display: flex;
     justify-content: center;
 }
 
-.logo-flotante {
+/* LOGO INICIO: Flotación amplia y resplandor nítido */
+.logo-flotante, .hero-img {
     width: 100%;
-    max-width: 420px; /* Subimos de 320px a 420px para que crezca */
+    max-width: 410px;
     border-radius: 50%;
-    box-shadow: 0 0 45px rgba(212, 175, 55, 0.5); /* Anillo de luz dorada más grande */
-    border: 3px solid rgba(212, 175, 55, 0.7);
-    animation: flotar 4s ease-in-out infinite;
+    border: 3px solid var(--blue-neon);
+    animation: flotarGranImpacto 4.2s ease-in-out infinite !important;
 }
 
-@keyframes flotar {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); }
+@keyframes flotarGranImpacto {
+    0%, 100% {
+        transform: translateY(0px);
+        box-shadow: 0 0 20px rgba(0, 210, 255, 0.5), inset 0 0 15px rgba(0, 210, 255, 0.3);
+    }
+    50% {
+        transform: translateY(-16px);
+        box-shadow: 0 0 35px rgba(0, 210, 255, 0.8), inset 0 0 25px rgba(0, 210, 255, 0.5);
+    }
 }
 
 .hero-contenido {
@@ -148,206 +174,224 @@ html, body {
     min-width: 280px;
 }
 
-.badge {
-    background-color: rgba(212, 175, 55, 0.15);
-    color: var(--gold);
-    padding: 0.25rem 0.9rem;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    border: 1px solid var(--gold);
-    display: inline-block;
+/* OCULTAR ETIQUETA DE UBICACIÓN COCHABAMBA EN INICIO */
+.badge, .badge-linea {
+    display: none !important;
+}
+
+/* =======================================================
+   EFECTO DE BRILLO AZUL EN TÍTULOS MAYORES
+   ======================================================= */
+.titulo-futurista, h1, h2, h3, .titulo-seccion {
+    font-family: 'Orbitron', sans-serif;
+    color: #ffffff;
+    line-height: 1.25;
+    transition: text-shadow 0.35s ease, transform 0.35s ease, color 0.35s ease;
 }
 
 .titulo-futurista {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 2.1rem;
+    font-size: 2.2rem;
     font-weight: 800;
-    color: #ffffff;
-    line-height: 1.2;
-    margin: 0.8rem 0;
-}
-
-.glitch-gold {
-    background: linear-gradient(135deg, #FFF099 0%, #D4AF37 50%, #997A15 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.hero-descripcion {
-    color: var(--text-gray);
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-}
-
-/* Botones Futuristas */
-.btn-futurista-primario {
-    background: linear-gradient(135deg, #D4AF37 0%, #B59226 100%);
-    color: #000;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 700;
-    padding: 0.75rem 1.6rem;
-    border-radius: 30px;
-    text-decoration: none;
-    display: inline-block;
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-    transition: transform 0.3s;
-}
-
-.btn-futurista-primario:hover {
-    transform: translateY(-2px);
-}
-
-.btn-futurista-secundario {
-    background: transparent;
-    color: #fff;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 0.75rem;
-    padding: 0.75rem 1.6rem;
-    border-radius: 30px;
-    text-decoration: none;
-    border: 1px solid rgba(212, 175, 55, 0.5);
-    margin-left: 0.5rem;
-    display: inline-block;
-}
-
-/* Estilos de las Páginas Secundarias */
-.seccion {
-    padding: 6rem 2rem 4rem 2rem;
-    max-width: 1100px;
-    margin: 0 auto;
-    width: 100%;
 }
 
 .titulo-seccion {
     text-align: center;
-    font-size: 2rem;
-    color: white;
-    font-family: 'Orbitron', sans-serif;
+    font-size: 2.1rem;
+    color: var(--blue-neon-bright) !important;
+}
+
+/* Brillo neón al pasar el mouse por los Títulos Principales */
+h1:hover, h2:hover, .titulo-seccion:hover, .titulo-futurista:hover {
+    color: #ffffff !important;
+    text-shadow: 0 0 12px var(--blue-neon), 
+                 0 0 25px var(--blue-neon-glow), 
+                 0 0 35px rgba(0, 210, 255, 0.3) !important;
+    transform: translateY(-2px);
+}
+
+.glitch-gold {
+    color: var(--blue-neon-bright) !important;
+    background: none !important;
+    -webkit-text-fill-color: var(--blue-neon-bright) !important;
+}
+
+.hero-descripcion, .subtitulo-seccion {
+    color: var(--text-gray);
+    font-size: 0.95rem;
 }
 
 .subtitulo-seccion {
     text-align: center;
-    color: var(--gold);
-    font-size: 0.9rem;
+    color: var(--blue-neon-bright);
     margin-bottom: 2.5rem;
+}
+
+/* =======================================================
+   BOTONES FUTURISTAS
+   ======================================================= */
+.btn-futurista-primario, .btn-primario, .btn-oro, .btn {
+    background: linear-gradient(135deg, var(--blue-neon) 0%, var(--blue-deep) 100%) !important;
+    color: #000000 !important;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    padding: 0.75rem 1.7rem;
+    font-size: 0.9rem;
+    border-radius: 30px;
+    text-decoration: none;
+    display: inline-block;
+    border: none !important;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.35) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-futurista-primario:hover, .btn-primario:hover, .btn-oro:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 0 25px rgba(0, 210, 255, 0.6) !important;
+}
+
+.btn-futurista-secundario, .btn-secundario {
+    background: transparent;
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    padding: 0.75rem 1.7rem;
+    border-radius: 30px;
+    text-decoration: none;
+    border: 1px solid rgba(0, 210, 255, 0.5) !important;
+    margin-left: 0.5rem;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.btn-futurista-secundario:hover, .btn-secundario:hover {
+    background: rgba(0, 210, 255, 0.12);
+    color: var(--blue-neon-bright);
+}
+
+/* =======================================================
+   CARDS 3D Y MOVIMIENTO DE ÍCONOS UNIFICADO (TODAS LAS CARDS)
+   ======================================================= */
+.seccion {
+    padding: 6rem 2rem 4rem 2rem;
+    max-width: 1150px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .grid-tarjetas, .grid-catalogo {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.8rem;
 }
 
-.tarjeta-info, .tarjeta-beneficio, .tarjeta-producto {
+.tarjeta-info, .tarjeta-beneficio, .tarjeta-producto, .tarjeta-valor, .card, .grid-catalogo > div {
     background-color: var(--bg-card);
-    padding: 2rem;
-    border-radius: 12px;
-    border: 1px solid #2A2A2A;
+    padding: 2.2rem;
+    border-radius: 14px;
+    border: 1px solid #282828;
     text-align: center;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.4s ease, 
+                border-color 0.4s ease !important;
+    perspective: 1000px;
 }
 
-.icono, .icono-dorado { font-size: 2rem; color: var(--gold); margin-bottom: 1rem; }
-.tarjeta-producto.destacada { border: 2px solid var(--gold); }
-.tag { background-color: #333; color: var(--text-gray); font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 10px; display: inline-block; }
-.tag-oro { background-color: var(--gold); color: black; font-weight: bold; }
-.precio { font-size: 1.8rem; font-weight: bold; color: var(--gold); margin: 1rem 0; font-family: 'Orbitron', sans-serif; }
-
-.btn { padding: 0.8rem 1.8rem; border-radius: 25px; border: none; font-weight: bold; cursor: pointer; }
-.btn-primario { background-color: var(--gold); color: black; }
-.btn-oro { background-color: var(--gold); color: black; width: 100%; }
-
-.contacto-contenedor {
-    background-color: var(--bg-card);
-    padding: 3rem;
-    border-radius: 15px;
-    border: 1px solid #2A2A2A;
-    text-align: center;
+/* Salto 3D en TODAS las tarjetas */
+.tarjeta-info:hover, .tarjeta-beneficio:hover, .tarjeta-producto:hover, .tarjeta-valor:hover, .card:hover {
+    transform: translateY(-12px) scale(1.03) rotateX(3deg);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.85), 0 0 20px rgba(0, 210, 255, 0.4) !important;
+    border-color: var(--blue-neon) !important;
 }
 
-/* Pie de Página Fijo para la Portada */
-.footer-portada {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: black;
-    border-top: 1px solid #2A2A2A;
-    padding: 0.6rem 2rem;
-    text-align: center;
+/* Transición para TODOS los íconos (FontAwesome, SVGs o Emojis) */
+.tarjeta-info i, .tarjeta-beneficio i, .tarjeta-producto i, .tarjeta-valor i, .card i,
+.tarjeta-info svg, .tarjeta-beneficio svg, .tarjeta-producto svg, .tarjeta-valor svg, .card svg,
+.icono, .icono-dorado, .ojitos-curiosos {
+    font-size: 2.2rem;
+    color: var(--blue-neon-bright) !important;
+    margin-bottom: 1rem;
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55), filter 0.4s ease;
+}
+
+/* MOVIMIENTO Y GIRO INTERACTIVO DE ÍCONOS AL HACER HOVER */
+.tarjeta-info:hover i, .tarjeta-beneficio:hover i, .tarjeta-producto:hover i, .tarjeta-valor:hover i, .card:hover i,
+.tarjeta-info:hover svg, .tarjeta-beneficio:hover svg, .tarjeta-producto:hover svg, .tarjeta-valor:hover svg, .card:hover svg,
+.tarjeta-info:hover .icono, .tarjeta-beneficio:hover .icono, .tarjeta-valor:hover .icono {
+    transform: scale(1.3) rotate(12deg) translateY(-4px) !important;
+    filter: drop-shadow(0 0 10px var(--blue-neon));
+}
+
+.tarjeta-producto.destacada {
+    border: 2px solid var(--blue-neon) !important;
+}
+
+.tag {
+    background-color: #1f1f1f;
+    color: var(--blue-neon-bright);
     font-size: 0.75rem;
-    color: var(--text-gray);
-    z-index: 100;
+    padding: 0.25rem 0.7rem;
+    border-radius: 10px;
+    display: inline-block;
+    border: 1px solid rgba(0, 210, 255, 0.25);
 }
 
-/* Pie de Página Estándar para las demás páginas */
-/* Pie de Página Estándar para las demás páginas */
-.footer-fijo {
-    background-color: black;
-    border-top: 1px solid #2A2A2A;
-    padding: 1rem 2rem;
-    text-align: center;
-    font-size: 0.8rem;
-    color: var(--text-gray);
-    margin-top: 3rem;
-    width: 100%;
+.tag-oro {
+    background: linear-gradient(135deg, var(--blue-neon) 0%, var(--blue-deep) 100%) !important;
+    color: black !important;
+    font-weight: bold;
 }
 
-/* Adaptación para pantallas pequeñas */
-@media (max-width: 768px) {
-    .header { position: relative; flex-direction: column; gap: 0.8rem; }
-    .hero-fijo { height: auto; min-height: 100vh; padding-top: 2rem; overflow: auto; }
-    .hero-contenedor { flex-direction: column; text-align: center; }
-    .footer-portada { position: relative; }
+.precio {
+    font-size: 1.9rem;
+    font-weight: bold;
+    color: var(--blue-neon-bright) !important;
+    margin: 1rem 0;
+    font-family: 'Orbitron', sans-serif;
 }
-/* Caja provisional para fotos pendientes */
-.contenedor-foto-placeholder {
-    background-color: #151515;
-    border: 2px dashed var(--gold);
+
+.contenedor-foto-placeholder, .contenedor-foto {
+    background-color: #111;
+    border: 2px dashed rgba(0, 210, 255, 0.5) !important;
     border-radius: 12px;
-    padding: 2.5rem 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding: 1.2rem 0.5rem;
+    margin-bottom: 1.2rem;
+    transition: all 0.3s ease;
+    overflow: hidden;
 }
 
-/* Estilo para cuando subas la foto real */
-.imagen-seccion {
+.tarjeta-producto:hover .contenedor-foto-placeholder {
+    border-style: solid !important;
+    border-color: var(--blue-neon) !important;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+}
+
+.imagen-producto, .foto-producto {
     width: 100%;
-    max-height: 250px;
+    height: 185px;
     object-fit: cover;
-    border-radius: 12px;
-    border: 1px solid var(--gold);
+    border-radius: 8px;
+    display: block;
+    animation: flotarLiviano 4s ease-in-out infinite;
+    transition: transform 0.35s ease;
 }
 
-
-
-
-/* Asegura que el fondo negro cubra el 100% de la pantalla */
-html, body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
+.tarjeta-producto:hover .imagen-producto {
+    transform: scale(1.05);
 }
 
-/* Hace que el contenido principal ocupe todo el espacio libre y empuje el footer al final exacto */
-main, .seccion {
-    flex: 1;
+@keyframes flotarLiviano {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
 }
 
-
-
-
-
-
-
-
-
-/* MASCOTAS SHIMEJI */
+/* =======================================================
+   ANIMALITOS SHIMEJI (TAMAÑO GLOBAL UNIFICADO Y PATALEO)
+   ======================================================= */
 .mascota-virtual {
-    position: fixed;
-    font-size: 2.8rem;
+    position: fixed !important;
+    font-size: 3.2rem !important; /* Mismo tamaño gigante en TODAS las páginas */
     cursor: grab;
     user-select: none;
     z-index: 999;
@@ -357,76 +401,39 @@ main, .seccion {
     cursor: grabbing;
 }
 
-.bocadillo-texto {
-    position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #ffffff;
-    color: #111111;
-    padding: 2px 7px;
-    border-radius: 10px;
-    font-size: 0.7rem;
-    font-weight: bold;
-    white-space: nowrap;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-    pointer-events: none;
+/* ANIMACIÓN DE PATALEO DESESPERADO AL AGARRAR CON EL MOUSE */
+.mascota-virtual.pataleando .cuerpo-mascota,
+.mascota-virtual:active .cuerpo-mascota {
+    animation: patalearDesesperado 0.15s infinite alternate ease-in-out !important;
 }
 
-
-
-/* EFECTO DE PATALEO FÍSICO AL ELEVAR LAS MASCOTAS */
-.mascota-virtual.pataleando .cuerpo-mascota {
-    animation: patalear 0.18s infinite alternate ease-in-out;
-}
-
-@keyframes patalear {
+@keyframes patalearDesesperado {
     0% {
-        transform: scale(1.15) rotate(-12deg) translateY(-3px);
+        transform: scale(1.2) rotate(-14deg) translateY(-4px);
     }
     100% {
-        transform: scale(1.15) rotate(12deg) translateY(3px);
+        transform: scale(1.2) rotate(14deg) translateY(4px);
     }
 }
 
-
-
-/* ANIMALITO ESPÍA - ANIMACIÓN DE ASOMADO Y SUSTO */
 .animalito-espia {
     position: fixed !important;
-    font-size: 3.2rem !important;
+    font-size: 3.5rem !important;
     z-index: 999999 !important;
     cursor: pointer;
     user-select: none;
     opacity: 0;
     pointer-events: none;
-    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.6));
-    /* Transición suave para deslizarse y desaparecer */
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+    transition: transform 0.4s ease, opacity 0.3s ease;
 }
 
-/* Estado oculto fuera de pantalla según dirección */
-.animalito-espia.oculto-abajo { transform: translateY(80px); }
-.animalito-espia.oculto-arriba { transform: translateY(-80px); }
-.animalito-espia.oculto-izq { transform: translateX(-80px); }
-.animalito-espia.oculto-der { transform: translateX(80px); }
-
-/* Cuando se asoma entra suavemente */
 .animalito-espia.asomado {
     opacity: 1 !important;
     pointer-events: auto !important;
     transform: translate(0, 0) scale(1) !important;
 }
 
-/* EFECTO AL HACER CLICK (¡Se espanta!) */
-.animalito-espia.espantado {
-    transform: scale(1.3) rotate(15deg) !important;
-    opacity: 0 !important;
-    transition: transform 0.3s ease-in, opacity 0.3s ease-in !important;
-}
-
-/* BOCADILLO ADAPTABLE PARA EVITAR CORTES DE PANTALLA */
-.bocadillo-espia {
+.bocadillo-espia, .bocadillo-texto {
     position: absolute;
     top: -42px;
     left: 50%;
@@ -438,20 +445,232 @@ main, .seccion {
     font-size: 0.8rem;
     font-weight: bold;
     white-space: nowrap;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
-    transition: transform 0.2s ease, left 0.2s ease, right 0.2s ease;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.5);
 }
 
-/* Si la mascota está pegada a la DERECHA, el bocadillo se mete a la izquierda */
+/* FOOTER SOBRIO */
+.contacto-contenedor {
+    background-color: var(--bg-card);
+    padding: 3rem;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 210, 255, 0.25);
+    text-align: center;
+}
+
+.footer-portada, .footer-fijo {
+    background-color: black;
+    border-top: 1px solid rgba(0, 210, 255, 0.15);
+    padding: 0.8rem 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-gray);
+    width: 100%;
+}
+
+.footer-portada {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+}
+
+@media (max-width: 768px) {
+    .header { position: relative; flex-direction: column; gap: 0.6rem; }
+    .hero-fijo { height: auto; min-height: 100vh; padding-top: 2rem; overflow: auto; }
+    .hero-contenedor { flex-direction: column; text-align: center; }
+    .footer-portada { position: relative; }
+}
+
+
+
+
+
+
+
+
+
+/* =======================================================
+   ANIMALITOS ESPÍAS: TAMAÑO GIGANTE Y MARGEN DE PANTALLA
+   ======================================================= */
+
+/* Forzar tamaño grande a la mascota y a todos sus hijos */
+.animalito-espia, 
+.animalito-espia * {
+    font-size: 3.8rem !important;
+    line-height: 1 !important;
+}
+
+.animalito-espia {
+    position: fixed !important;
+    z-index: 999999 !important;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease !important;
+}
+
+/* Bocadillo de texto inteligente: centrado y sin cortarse */
+.bocadillo-espia {
+    position: absolute !important;
+    top: -45px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    background: #ffffff !important;
+    color: #111111 !important;
+    padding: 6px 14px !important;
+    border-radius: 12px !important;
+    font-size: 0.85rem !important; /* Tamaño de letra legible */
+    font-weight: bold !important;
+    white-space: nowrap !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6) !important;
+    pointer-events: none !important;
+}
+
+/* Evitar que el bocadillo se salga si la mascota está pegada a la izquierda */
+.animalito-espia.oculto-izq .bocadillo-espia,
+.animalito-espia[style*="left: 0"] .bocadillo-espia,
+.animalito-espia[style*="left: 1"] .bocadillo-espia {
+    left: 10px !important;
+    transform: translateX(0) !important;
+}
+
+/* Evitar que se salga si está pegada a la derecha */
 .animalito-espia.oculto-der .bocadillo-espia {
     left: auto !important;
-    right: 0 !important;
+    right: 10px !important;
     transform: translateX(0) !important;
 }
 
-/* Si la mascota está pegada a la IZQUIERDA, el bocadillo se extiende hacia la derecha */
-.animalito-espia.oculto-izq .bocadillo-espia {
-    left: 0 !important;
-    right: auto !important;
-    transform: translateX(0) !important;
+/* Animación de desaparecer/volar al hacer clic */
+.animalito-espia.espantado {
+    transform: scale(1.6) rotate(20deg) translateY(-35px) !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =======================================================
+   ESTILO FUTURISTA PARA IMÁGENES SECUNDARIAS (MASCOTAS / HUMANOS)
+   ======================================================= */
+
+/* Estilo para marcos e imágenes dentro de secciones de presentación */
+.imagen-seccion,
+.seccion img:not(.logo-img-nav):not(.logo-flotante):not(.mascota-virtual):not(.animalito-espia) {
+    border-radius: 16px !important;
+    border: 2px solid rgba(0, 210, 255, 0.6) !important;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.25), 
+                0 8px 25px rgba(0, 0, 0, 0.7) !important;
+    animation: flotarImagenSuave 4.5s ease-in-out infinite alternate !important;
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease !important;
+}
+
+/* Efecto Hover: Resplandor de Fuego Azul + Elevación */
+.imagen-seccion:hover,
+.seccion img:not(.logo-img-nav):not(.logo-flotante):not(.mascota-virtual):not(.animalito-espia):hover {
+    transform: translateY(-8px) scale(1.02) !important;
+    border-color: #00d2ff !important;
+    box-shadow: 0 0 25px rgba(0, 210, 255, 0.7), 
+                0 0 45px rgba(0, 210, 255, 0.4), 
+                0 12px 30px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Animación de flotación liviana */
+@keyframes flotarImagenSuave {
+    0% {
+        transform: translateY(0px);
+    }
+    100% {
+        transform: translateY(-7px);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =======================================================
+   AVATAR ROBLOXIANO (RECORTADO SIN FRANJA VERDE Y BOCADILLO FIX)
+   ======================================================= */
+.roblox-mascota-contenedor {
+    position: absolute !important;
+    top: 22% !important;
+    left: 4% !important;
+    bottom: auto !important;
+    z-index: 9999 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    cursor: pointer !important;
+    user-select: none !important;
+}
+
+/* Bocadillo Neón corregido (flecha hacia abajo alineada) */
+.roblox-bocadillo {
+    background: #000000 !important;
+    color: #00d2ff !important;
+    border: 2px solid #00d2ff !important;
+    font-size: 0.85rem !important;
+    font-weight: bold !important;
+    font-family: 'Orbitron', sans-serif !important;
+    padding: 6px 14px !important;
+    border-radius: 12px !important;
+    margin-bottom: 8px !important;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.6) !important;
+    white-space: nowrap !important;
+    position: relative !important;
+}
+
+/* Triangulito pegado directamente debajo del bocadillo */
+.roblox-bocadillo::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: -8px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    border-width: 8px 8px 0 8px !important;
+    border-style: solid !important;
+    border-color: #00d2ff transparent transparent transparent !important;
+}
+
+/* Imagen del Avatar: clip-path elimina la franja verde superior */
+.roblox-avatar-img {
+    width: 170px !important;
+    height: auto !important;
+    /* Recorta 8% de arriba para eliminar la franja verde sobrante */
+    clip-path: inset(8% 0 0 0) !important;
+    filter: drop-shadow(0 0 16px #00d2ff) brightness(1.05) !important;
+    animation: flotarRobloxSpider 3.5s ease-in-out infinite !important;
+}
+
+.roblox-mascota-contenedor:hover .roblox-avatar-img {
+    transform: scale(1.08) rotate(-4deg) !important;
+    filter: drop-shadow(0 0 28px #00d2ff) !important;
+}
+
+@keyframes flotarRobloxSpider {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
 }
