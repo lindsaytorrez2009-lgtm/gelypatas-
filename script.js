@@ -139,6 +139,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
+
+
+
+
+
+
 // === SISTEMA DE ESPÍA CON SUSTOS PERSONALIZADOS POR PERSONAJE ===
 function iniciarAnimalitoCurioso(idElemento, config) {
     const espia = document.getElementById(idElemento);
@@ -348,3 +356,15 @@ function iniciarAnimalitoCurioso(idElemento, config) {
 
     aparecer();
 }
+
+
+
+
+
+
+
+
+
+
+
+

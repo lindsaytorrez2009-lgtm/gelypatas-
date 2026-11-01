@@ -608,16 +608,13 @@ h1:hover, h2:hover, .titulo-seccion:hover, .titulo-futurista:hover {
 
 
 
-
-
-
 /* =======================================================
-   AVATAR ROBLOXIANO (RECORTADO SIN FRANJA VERDE Y BOCADILLO FIX)
+   AVATAR ROBLOXIANO (TAMAÑO MÁS GRANDE Y PROPORCIONADO)
    ======================================================= */
 .roblox-mascota-contenedor {
     position: absolute !important;
-    top: 22% !important;
-    left: 4% !important;
+    top: 15% !important; /* Subimos un poco para compensar el mayor tamaño */
+    left: 3% !important;  /* Ajustado al margen izquierdo */
     bottom: auto !important;
     z-index: 9999 !important;
     display: flex !important;
@@ -627,23 +624,22 @@ h1:hover, h2:hover, .titulo-seccion:hover, .titulo-futurista:hover {
     user-select: none !important;
 }
 
-/* Bocadillo Neón corregido (flecha hacia abajo alineada) */
+/* Bocadillo Neón Proporcionado */
 .roblox-bocadillo {
     background: #000000 !important;
     color: #00d2ff !important;
     border: 2px solid #00d2ff !important;
-    font-size: 0.85rem !important;
+    font-size: 0.95rem !important; /* Texto un pelín más grande */
     font-weight: bold !important;
     font-family: 'Orbitron', sans-serif !important;
-    padding: 6px 14px !important;
-    border-radius: 12px !important;
+    padding: 8px 16px !important;
+    border-radius: 14px !important;
     margin-bottom: 8px !important;
-    box-shadow: 0 0 15px rgba(0, 210, 255, 0.6) !important;
+    box-shadow: 0 0 18px rgba(0, 210, 255, 0.7) !important;
     white-space: nowrap !important;
     position: relative !important;
 }
 
-/* Triangulito pegado directamente debajo del bocadillo */
 .roblox-bocadillo::after {
     content: '' !important;
     position: absolute !important;
@@ -655,22 +651,187 @@ h1:hover, h2:hover, .titulo-seccion:hover, .titulo-futurista:hover {
     border-color: #00d2ff transparent transparent transparent !important;
 }
 
-/* Imagen del Avatar: clip-path elimina la franja verde superior */
+/* Avatar robloxiano más grande y vistoso */
 .roblox-avatar-img {
-    width: 170px !important;
+    width: 240px !important; /* Aumentado a un tamaño épico pero natural */
     height: auto !important;
-    /* Recorta 8% de arriba para eliminar la franja verde sobrante */
     clip-path: inset(8% 0 0 0) !important;
-    filter: drop-shadow(0 0 16px #00d2ff) brightness(1.05) !important;
+    filter: drop-shadow(0 0 20px #00d2ff) brightness(1.05) !important;
     animation: flotarRobloxSpider 3.5s ease-in-out infinite !important;
 }
 
 .roblox-mascota-contenedor:hover .roblox-avatar-img {
-    transform: scale(1.08) rotate(-4deg) !important;
-    filter: drop-shadow(0 0 28px #00d2ff) !important;
+    transform: scale(1.06) rotate(-3deg) !important;
+    filter: drop-shadow(0 0 32px #00d2ff) !important;
 }
 
 @keyframes flotarRobloxSpider {
     0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-12px); }
 }
+
+/* =======================================================
+   FORZADO ABSOLUTO DE INTERACCIÓN EN ROBLOXIANO
+   ======================================================= */
+.roblox-mascota-contenedor,
+#robloxMascota,
+#robloxAvatar,
+#robloxMensaje {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    z-index: 9999999 !important;
+}
+
+/* Evitar que wrappers vacíos del hero tapen clics */
+.hero-logo-wrapper,
+.hero-contenedor {
+    pointer-events: none !important;
+}
+
+/* Devolver interacción a los elementos reales del hero */
+.hero-logo-wrapper img,
+.hero-contenido * {
+    pointer-events: auto !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =======================================================
+   ESTILO FINAL SHIMEJIS (LISTOS PARA CAMINAR Y ARRASTRAR)
+   ======================================================= */
+.mascota-virtual {
+    position: fixed !important;
+    bottom: 25px !important;
+    z-index: 99999 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    user-select: none !important;
+    cursor: grab !important;
+    touch-action: none;
+}
+
+.mascota-virtual:active {
+    cursor: grabbing !important;
+}
+
+/* Bocadillos estilo Neón oscuros */
+.mascota-virtual .bocadillo-texto {
+    background: #000000 !important;
+    color: #ffffff !important;
+    border: 1.5px solid #00d2ff !important;
+    font-size: 0.8rem !important;
+    font-weight: bold !important;
+    padding: 4px 10px !important;
+    border-radius: 12px !important;
+    margin-bottom: 6px !important;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.4) !important;
+    white-space: nowrap !important;
+    pointer-events: none;
+}
+
+/* Cuerpos de las mascotas */
+.mascota-virtual .cuerpo-mascota {
+    font-size: 2.2rem !important;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5)) !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Burbuja de diálogo adaptable y multilínea */
+/* =======================================================
+   POSICIONAMIENTO ABSOLUTO A LA DERECHA Y ABAJO
+   ======================================================= */
+.roblox-catalogo-posicion {
+    position: fixed !important;
+    bottom: 15px !important;       /* Lo ancla abajo */
+    right: 25px !important;        /* Lo ancla a la DERECHA */
+    left: auto !important;         /* ANULA el left del hero */
+    top: auto !important;          /* ANULA el top del hero */
+    transform: none !important;    /* Desactiva cualquier desplazamiento extra */
+    z-index: 999999 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+}
+
+
+
+
+    {
+    /* CONTROL DE TEXTO Y SALTOS DE LÍNEA */
+    white-space: normal !important;    /* Permite saltos de línea automáticos */
+    word-break: break-word !important;  /* Evita que se salgan palabras largas */
+    overflow-wrap: break-word !important;
+
+    /* Animación de visibilidad */
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+
+/* Mostrar la burbuja al pasar el cursor o hacer clic */  
+.roblox-catalogo-posicion:hover .roblox-bocadillo,
+.roblox-catalogo-posicion.activo .roblox-bocadillo {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+
+
+
+
+
+
+
+
